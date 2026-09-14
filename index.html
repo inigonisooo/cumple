@@ -6,169 +6,46 @@
   <title>¡Feliz Cumpleaños!</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-      font-family: 'Press Start 2P', cursive;
-      user-select: none;
+    * { box-sizing: border-box; font-family: 'Press Start 2P', cursive; user-select: none; }
+    body { margin: 0; padding: 0; background: linear-gradient(180deg, #bda3e6 0%, #f7c5dd 100%); color: #5c3977; min-height: 100vh; display: flex; justify-content: center; align-items: center; overflow-x: hidden; }
+    .screen { display: none; width: 100%; max-width: 480px; min-height: 90vh; background: rgba(255, 255, 255, 0.25); border: 4px solid #fff; border-radius: 20px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); text-align: center; flex-direction: column; justify-content: center; align-items: center; position: relative; }
+    .screen.active { display: flex; }
+    h1, h2, h3 { text-shadow: 2px 2px 0px #fff; margin-bottom: 20px; font-size: 16px; line-height: 1.5; }
+    .avatar-container { display: flex; gap: 15px; margin: 20px 0; }
+    .pixel-avatar { width: 80px; height: 80px; border-radius: 50%; border: 3px solid #fff; background-size: cover; background-position: center; image-rendering: pixelated; }
+    .btn { background-color: #ff85a2; color: white; border: 3px solid #fff; padding: 12px 24px; font-size: 12px; border-radius: 12px; cursor: pointer; box-shadow: 0 4px 0 #d65a7f; transition: all 0.1s; margin-top: 15px; }
+    .btn:active { transform: translateY(4px); box-shadow: 0 0 0 #d65a7f; }
+    .pin-display { background: #fff; border: 3px solid #ff85a2; border-radius: 8px; padding: 10px 20px; font-size: 18px; letter-spacing: 5px; margin-bottom: 20px; min-width: 160px; min-height: 40px; }
+    .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 220px; }
+    .key { background: #fff; border: 2px solid #bda3e6; border-radius: 8px; padding: 12px; font-size: 14px; cursor: pointer; box-shadow: 0 3px 0 #9b7fd3; }
+    .key:active { transform: translateY(3px); box-shadow: none; }
+    .gifts-grid { display: flex; justify-content: center; gap: 15px; margin: 20px 0; }
+    .gift-box { width: 70px; height: 70px; background: #ffb3c6; border: 3px solid #fff; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 28px; cursor: pointer; box-shadow: 0 4px 0 #e28199; }
+    
+    /* GALERÍA DE 4 FOTOS MÁS GRANDES (2x2) */
+    .photo-grid { 
+      display: grid; 
+      grid-template-columns: repeat(2, 1fr); 
+      gap: 12px; 
+      margin-top: 10px; 
+      width: 100%; 
     }
-    body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(180deg, #bda3e6 0%, #f7c5dd 100%);
-      color: #5c3977;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow-x: hidden;
+    .photo-card { 
+      background: white; 
+      padding: 6px; 
+      border-radius: 10px; 
+      border: 3px solid #bda3e6; 
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
-    .screen {
-      display: none;
-      width: 100%;
-      max-width: 480px;
-      min-height: 90vh;
-      background: rgba(255, 255, 255, 0.25);
-      border: 4px solid #fff;
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-      text-align: center;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      position: relative;
+    .photo-card img { 
+      width: 100%; 
+      height: 150px; /* Aumentada la altura para que se vean más grandes */
+      object-fit: cover; 
+      border-radius: 6px; 
+      display: block;
     }
-    .screen.active {
-      display: flex;
-    }
-    h1, h2, h3 {
-      text-shadow: 2px 2px 0px #fff;
-      margin-bottom: 20px;
-      font-size: 16px;
-      line-height: 1.5;
-    }
-    .avatar-container {
-      display: flex;
-      gap: 15px;
-      margin: 20px 0;
-    }
-    .pixel-avatar {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      border: 3px solid #fff;
-      background-size: cover;
-      background-position: center;
-      image-rendering: pixelated;
-    }
-    .btn {
-      background-color: #ff85a2;
-      color: white;
-      border: 3px solid #fff;
-      padding: 12px 24px;
-      font-size: 12px;
-      border-radius: 12px;
-      cursor: pointer;
-      box-shadow: 0 4px 0 #d65a7f;
-      transition: all 0.1s;
-      margin-top: 15px;
-    }
-    .btn:active {
-      transform: translateY(4px);
-      box-shadow: 0 0 0 #d65a7f;
-    }
-    /* Keypad / Password Screen */
-    .pin-display {
-      background: #fff;
-      border: 3px solid #ff85a2;
-      border-radius: 8px;
-      padding: 10px 20px;
-      font-size: 18px;
-      letter-spacing: 5px;
-      margin-bottom: 20px;
-      min-width: 160px;
-      min-height: 40px;
-    }
-    .keypad {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      width: 220px;
-    }
-    .key {
-      background: #fff;
-      border: 2px solid #bda3e6;
-      border-radius: 8px;
-      padding: 12px;
-      font-size: 14px;
-      cursor: pointer;
-      box-shadow: 0 3px 0 #9b7fd3;
-    }
-    .key:active {
-      transform: translateY(3px);
-      box-shadow: none;
-    }
-    /* Gifts Section */
-    .gifts-grid {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin: 20px 0;
-    }
-    .gift-box {
-      width: 70px;
-      height: 70px;
-      background: #ffb3c6;
-      border: 3px solid #fff;
-      border-radius: 10px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 28px;
-      cursor: pointer;
-      box-shadow: 0 4px 0 #e28199;
-    }
-    /* Letter Modal */
-    .paper-letter {
-      background: #fcf8ec;
-      border: 3px solid #d4c5a9;
-      border-radius: 10px;
-      padding: 15px;
-      font-family: sans-serif;
-      font-size: 12px;
-      line-height: 1.6;
-      color: #4a3e3d;
-      text-align: left;
-      max-height: 250px;
-      overflow-y: auto;
-    }
-    /* Photo Gallery Grid */
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      margin-top: 15px;
-    }
-    .photo-card {
-      background: white;
-      padding: 5px;
-      border-radius: 8px;
-      border: 2px solid #bda3e6;
-    }
-    .photo-card img {
-      width: 100%;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 4px;
-    }
-    /* Music Player */
-    .player-card {
-      background: #fff;
-      border: 3px solid #ff85a2;
-      border-radius: 12px;
-      padding: 15px;
-      width: 100%;
-    }
+
+    .player-card { background: #fff; border: 3px solid #ff85a2; border-radius: 12px; padding: 15px; width: 100%; }
   </style>
 </head>
 <body>
