@@ -216,37 +216,39 @@
     <p id="gift-hint" style="font-size: 9px; color: #7a5c96;">Haz clic en una caja para abrirla</p>
   </div>
 
+  <p><b>¡Feliz cumpleaños ala mejor novia del mundo!</b></p>
   <div id="gift-letter" class="screen">
     <h2>Una carta para ti 💌</h2>
-   <div class="paper-letter">
-  <p><b>¡Feliz cumpleaños ala mejor novia del mundo!</b></p>
-  <img src="carta1.jpg" alt="Foto de la carta" style="width: 100%; border-radius: 8px; margin: 10px 0;">
-</div>
+    <div style="width: 100%; max-height: 350px; overflow-y: auto; border: 3px solid #fff; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    
+      <img src="carta1.jpg" alt="carta1" style="width: 100%; display: block; border-radius: 8px;">
+    </div>
+    <button class="btn" onclick="goToScreen('screen-gifts')">VOLVER</button>
+  </div>
     <button class="btn" onclick="goToScreen('screen-gifts')">VOLVER</button>
   </div>
 
   <div id="gift-photos" class="screen">
     <h2>Nuestros Recuerdos 📸</h2>
     <div class="photo-grid">
-      <div class="IMG1"><img src="https://picsum.photos/200/200?random=1" alt="IMG1"></div>
-      <div class="imagen2"><img src="https://picsum.photos/200/200?random=2" alt="imagen2"></div>
-      <div class="imagen3"><img src="https://picsum.photos/200/200?random=3" alt="imagen3"></div>
-      <div class="imagen4"><img src="https://picsum.photos/200/200?random=4" alt="imagen4"></div>
+      <div class="IMG1.jpeg"><img src="https://picsum.photos/200/200?random=1" alt="IMG1.jpeg"></div>
+      <div class="imagen2.jpeg"><img src="https://picsum.photos/200/200?random=2" alt="imagen2.jpeg"></div>
+      <div class="imagen3.JPG"><img src="https://picsum.photos/200/200?random=3" alt="imagen3.JPG"></div>
+      <div class="imagen4.JPG"><img src="https://picsum.photos/200/200?random=4" alt="imagen4.JPG"></div>
     </div>
     <button class="btn" onclick="goToScreen('screen-gifts')">VOLVER</button>
   </div>
-
-  <div id="gift-music" class="screen">
-    <h2>Una canción que me recuerda a ti 🎶</h2>
+<div id="gift-music" class="screen">
+    <h2>Una canción para ti 🎶</h2>
     <div class="player-card">
-      <p style="font-size: 10px; margin-bottom: 15px;">Reproduciendo nuestra canción favorita 💖</p>
+      <p style="font-size: 10px; margin-bottom: 15px;">Canción especial 💖</p>
       <audio controls style="width: 100%;">
-        <source src="cancion.mp3" type="audio/mpeg">
-        Tu navegador no soporta el reproductor de audio.
+        <!-- Asegúrate de subir la canción llamada cancion.mp3 a GitHub -->
+        <source src="cancion.mp3.mp3" type="audio/mpeg">
+        Tu navegador no soporta el reproductor.
       </audio>
     </div>
-    <button class="btn" onclick="goToScreen('screen-gifts')">VOLVER</button>
-  </div>
+       
 
   <script>
     // --- CONFIGURACIÓN EDITABLE ---
