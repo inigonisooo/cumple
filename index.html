@@ -6,46 +6,169 @@
   <title>¡Feliz Cumpleaños!</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; font-family: 'Press Start 2P', cursive; user-select: none; }
-    body { margin: 0; padding: 0; background: linear-gradient(180deg, #bda3e6 0%, #f7c5dd 100%); color: #5c3977; min-height: 100vh; display: flex; justify-content: center; align-items: center; overflow-x: hidden; }
-    .screen { display: none; width: 100%; max-width: 480px; min-height: 90vh; background: rgba(255, 255, 255, 0.25); border: 4px solid #fff; border-radius: 20px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); text-align: center; flex-direction: column; justify-content: center; align-items: center; position: relative; }
-    .screen.active { display: flex; }
-    h1, h2, h3 { text-shadow: 2px 2px 0px #fff; margin-bottom: 20px; font-size: 16px; line-height: 1.5; }
-    .avatar-container { display: flex; gap: 15px; margin: 20px 0; }
-    .pixel-avatar { width: 80px; height: 80px; border-radius: 50%; border: 3px solid #fff; background-size: cover; background-position: center; image-rendering: pixelated; }
-    .btn { background-color: #ff85a2; color: white; border: 3px solid #fff; padding: 12px 24px; font-size: 12px; border-radius: 12px; cursor: pointer; box-shadow: 0 4px 0 #d65a7f; transition: all 0.1s; margin-top: 15px; }
-    .btn:active { transform: translateY(4px); box-shadow: 0 0 0 #d65a7f; }
-    .pin-display { background: #fff; border: 3px solid #ff85a2; border-radius: 8px; padding: 10px 20px; font-size: 18px; letter-spacing: 5px; margin-bottom: 20px; min-width: 160px; min-height: 40px; }
-    .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 220px; }
-    .key { background: #fff; border: 2px solid #bda3e6; border-radius: 8px; padding: 12px; font-size: 14px; cursor: pointer; box-shadow: 0 3px 0 #9b7fd3; }
-    .key:active { transform: translateY(3px); box-shadow: none; }
-    .gifts-grid { display: flex; justify-content: center; gap: 15px; margin: 20px 0; }
-    .gift-box { width: 70px; height: 70px; background: #ffb3c6; border: 3px solid #fff; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 28px; cursor: pointer; box-shadow: 0 4px 0 #e28199; }
-    
-    /* GALERÍA DE 4 FOTOS MÁS GRANDES (2x2) */
-    .photo-grid { 
-      display: grid; 
-      grid-template-columns: repeat(2, 1fr); 
-      gap: 12px; 
-      margin-top: 10px; 
-      width: 100%; 
+    * {
+      box-sizing: border-box;
+      font-family: 'Press Start 2P', cursive;
+      user-select: none;
     }
-    .photo-card { 
-      background: white; 
-      padding: 6px; 
-      border-radius: 10px; 
-      border: 3px solid #bda3e6; 
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(180deg, #bda3e6 0%, #f7c5dd 100%);
+      color: #5c3977;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
     }
-    .photo-card img { 
-      width: 100%; 
-      height: 150px; /* Aumentada la altura para que se vean más grandes */
-      object-fit: cover; 
-      border-radius: 6px; 
-      display: block;
+    .screen {
+      display: none;
+      width: 100%;
+      max-width: 480px;
+      min-height: 90vh;
+      background: rgba(255, 255, 255, 0.25);
+      border: 4px solid #fff;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      text-align: center;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
     }
-
-    .player-card { background: #fff; border: 3px solid #ff85a2; border-radius: 12px; padding: 15px; width: 100%; }
+    .screen.active {
+      display: flex;
+    }
+    h1, h2, h3 {
+      text-shadow: 2px 2px 0px #fff;
+      margin-bottom: 20px;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    .avatar-container {
+      display: flex;
+      gap: 15px;
+      margin: 20px 0;
+    }
+    .pixel-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      background-size: cover;
+      background-position: center;
+      image-rendering: pixelated;
+    }
+    .btn {
+      background-color: #ff85a2;
+      color: white;
+      border: 3px solid #fff;
+      padding: 12px 24px;
+      font-size: 12px;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 0 #d65a7f;
+      transition: all 0.1s;
+      margin-top: 15px;
+    }
+    .btn:active {
+      transform: translateY(4px);
+      box-shadow: 0 0 0 #d65a7f;
+    }
+    /* Keypad / Password Screen */
+    .pin-display {
+      background: #fff;
+      border: 3px solid #ff85a2;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 18px;
+      letter-spacing: 5px;
+      margin-bottom: 20px;
+      min-width: 160px;
+      min-height: 40px;
+    }
+    .keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      width: 220px;
+    }
+    .key {
+      background: #fff;
+      border: 2px solid #bda3e6;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 3px 0 #9b7fd3;
+    }
+    .key:active {
+      transform: translateY(3px);
+      box-shadow: none;
+    }
+    /* Gifts Section */
+    .gifts-grid {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+    }
+    .gift-box {
+      width: 70px;
+      height: 70px;
+      background: #ffb3c6;
+      border: 3px solid #fff;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 28px;
+      cursor: pointer;
+      box-shadow: 0 4px 0 #e28199;
+    }
+    /* Letter Modal */
+    .paper-letter {
+      background: #fcf8ec;
+      border: 3px solid #d4c5a9;
+      border-radius: 10px;
+      padding: 15px;
+      font-family: sans-serif;
+      font-size: 12px;
+      line-height: 1.6;
+      color: #4a3e3d;
+      text-align: left;
+      max-height: 250px;
+      overflow-y: auto;
+    }
+    /* Photo Gallery Grid */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .photo-card {
+      background: white;
+      padding: 5px;
+      border-radius: 8px;
+      border: 2px solid #bda3e6;
+    }
+    .photo-card img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+    /* Music Player */
+    .player-card {
+      background: #fff;
+      border: 3px solid #ff85a2;
+      border-radius: 12px;
+      padding: 15px;
+      width: 100%;
+    }
   </style>
 </head>
 <body>
@@ -53,8 +176,8 @@
   <div id="screen-password" class="screen active">
     <h2>Adivina la contraseña 💖</h2>
     <div class="avatar-container">
-      <div class="pixel-avatar" style="background-image: url('https://api.dicebear.com/7.x/pixel-art/svg?seed=Felix');"></div>
-      <div class="pixel-avatar" style="background-image: url('https://api.dicebear.com/7.x/pixel-art/svg?seed=Anita');"></div>
+      <div class="pixel-avatar" style="background-image: url('https://api.dicebear.com/7.x/pixel-art/svg?seed=Inigo');"></div>
+      <div class="pixel-avatar" style="background-image: url('https://api.dicebear.com/7.x/pixel-art/svg?seed=Maialen');"></div>
     </div>
     <div id="pin-display" class="pin-display">****</div>
     <div class="keypad">
@@ -74,10 +197,10 @@
   </div>
 
   <div id="screen-welcome" class="screen">
-    <h1>¡Feliz cumpleaños Ane!🎉</h1>
+    <h1>¡HAPPY BIRTHDAY! 🎉</h1>
     <div class="avatar-container">
-      <div class="pixel-avatar" style="background-image: url('https://api.dicebear.com/7.x/pixel-art/svg?seed=Felix');"></div>
-      <div class="pixel-avatar" style="background-image: url('https://api.dicebear.com/7.x/pixel-art/svg?seed=Anita');"></div>
+      <div class="pixel-avatar" style="background-image: url('https://api.dicebear.com/7.x/pixel-art/svg?seed=Inigo');"></div>
+      <div class="pixel-avatar" style="background-image: url('https://api.dicebear.com/7.x/pixel-art/svg?seed=Maialen');"></div>
     </div>
     <p style="font-size: 10px; margin: 15px 0;">Preparé este regalo especial solo para ti ✨</p>
     <button class="btn" onclick="goToScreen('screen-gifts')">EMPEZAR</button>
@@ -93,41 +216,42 @@
     <p id="gift-hint" style="font-size: 9px; color: #7a5c96;">Haz clic en una caja para abrirla</p>
   </div>
 
-  <p><b>¡Feliz cumpleaños ala mejor novia del mundo!</b></p>
   <div id="gift-letter" class="screen">
-    <h2>Una carta para ti 💌</h2>    
-      <img src="carta1.jpg" alt="carta1" style="width: 100%; display: block; border-radius: 8px;">
+    <h2>Una carta para ti 💌</h2>
+    <div class="paper-letter">
+      <p><b>¡Feliz cumpleaños!</b></p>
+      <p>Haces que cada día sea más brillante con tu sonrisa y cada momento más especial. Me siento súper afortunada de tenerte a mi lado y no puedo esperar por todas las aventuras y recuerdos que crearemos este año.</p>
+      <p>Te amo más de lo que las palabras pueden expresar. ¡Espero que tengas un día tan increíble como tú!</p>
     </div>
     <button class="btn" onclick="goToScreen('screen-gifts')">VOLVER</button>
   </div>
-    <button class="btn" onclick="goToScreen('screen-gifts')">VOLVER</button>
-  </div>
 
-  <div id="gift-photos" class="screen">photo-card   <div style="width: 50%; max-height: 100px; overflow-y: auto; border: 3px solid #fff; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+  <div id="gift-photos" class="screen">
     <h2>Nuestros Recuerdos 📸</h2>
     <div class="photo-grid">
-      <div class="photo-card"><img src="IMG1.jpeg" alt="IMG1.jpeg"></div>
-      <div class="photo-card"><img src="imagen2.jpeg" alt="imagen2.jpeg"></div>
-      <div class="photo-card"><img src="imagen3.JPG" alt="imagen3.JPG"></div>
-      <div class="photo-card"><img src="imagen4.JPG" alt="imagen4.JPG"></div>
+      <div class="photo-card"><img src="foto1.jpg" alt="Foto 1"></div>
+      <div class="photo-card"><img src="foto2.jpg" alt="Foto 2"></div>
+      <div class="photo-card"><img src="foto3.jpg" alt="Foto 3"></div>
+      <div class="photo-card"><img src="foto4.jpg" alt="Foto 4"></div>
     </div>
     <button class="btn" onclick="goToScreen('screen-gifts')">VOLVER</button>
   </div>
-<div id="gift-music" class="screen">
+
+  <div id="gift-music" class="screen">
     <h2>Una canción para ti 🎶</h2>
     <div class="player-card">
-      <p style="font-size: 10px; margin-bottom: 15px;">Canción especial 💖</p>
+      <p style="font-size: 10px; margin-bottom: 15px;">Reproduciendo nuestra canción favorita 💖</p>
       <audio controls style="width: 100%;">
-        <!-- Asegúrate de subir la canción llamada cancion.mp3 a GitHub -->
-        <source src="cancion.mp3.mp3" type="audio/mpeg">
-        Tu navegador no soporta el reproductor.
+        <source src="cancion.mp3" type="audio/mpeg">
+        Tu navegador no soporta el reproductor de audio.
       </audio>
     </div>
-       
+    <button class="btn" onclick="goToScreen('screen-gifts')">VOLVER</button>
+  </div>
 
   <script>
-    // --- CONFIGURACIÓN EDITABLE ---
-    const CORRECT_PIN = "3007"; // Cambia esta contraseña (ejemplo: fecha 15/08)
+    // --- CONFIGURACIÓN CON EL PIN SOLICITADO ---
+    const CORRECT_PIN = "3007"; 
 
     let currentPin = "";
 
